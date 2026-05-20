@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+  
+  --color-brand-blue: #003366;
+  --color-brand-blue-deep: #001F3F;
+  --color-brand-accent: #D4AF37; /* Royal Gold */
+  --color-brand-accent-hover: #C5A028;
+  --color-brand-neutral-light: #F8FAFC; /* Slate 50 */
+  --color-brand-gray-muted: #64748B; /* Slate 500 */
+}
+
+/* Custom scroll behavior and interactive elements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll Animation Utilities */
+.animate-ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom shadow system inspired by the design system */
+.shadow-premium {
+  box-shadow: 0 4px 20px -2px rgba(0, 31, 63, 0.08), 0 0 0 1px rgba(0, 31, 63, 0.04);
+}
+.shadow-premium-xl {
+  box-shadow: 0 20px 40px -4px rgba(0, 31, 63, 0.12), 0 0 0 1px rgba(0, 31, 63, 0.05);
+}
+
+/* Lightbox overlay styling */
+.lightbox-backdrop {
+  background-color: rgba(0, 31, 63, 0.9);
+}
+
+/* Responsive layout adjustments for interactive maps and iframe */
+iframe {
+  filter: grayscale(10%) contrast(105%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

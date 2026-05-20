@@ -1,0 +1,6 @@
+{
+  "name": "AAG Biuro Rachunkowe",
+  "description": "Profesjonalne biuro rachunkowe we Wrocławiu z wielopokoleniowym doświadczeniem. Pełna księgowość, KPiR, kadry i płace oraz doradztwo podatkowe.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
