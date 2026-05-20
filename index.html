@@ -1,16 +1,63 @@
 <!doctype html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AAG Biuro Rachunkowe Wrocław - Księgowość, Kadry i Płace</title>
+    <title>AAG Biuro Rachunkowe Wrocław - Księgowość i Doradztwo</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Noscript Fallback for Animation Safety -->
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Montserrat', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                blue: '#003366',
+                deep: '#001F3F',
+                accent: '#D4AF37', // Gold 
+                'accent-hover': '#C5A028',
+                slate: '#0F172A',
+              }
+            },
+            boxShadow: {
+              'premium': '0 4px 20px -2px rgba(0, 31, 63, 0.08), 0 0 0 1px rgba(0, 31, 63, 0.04)',
+              'premium-xl': '0 20px 40px -4px rgba(0, 31, 63, 0.12), 0 0 0 1px rgba(0, 31, 63, 0.05)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom inline styles and scroll animations -->
+    <style>
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .animate-active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      iframe {
+        filter: grayscale(8%) contrast(102%);
+      }
+    </style>
+
+    <!-- Noscript Fallback - Rule 5 -->
     <noscript>
       <style>
         .animate-on-scroll {
@@ -20,9 +67,1609 @@
       </style>
     </noscript>
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans selection:bg-amber-500 selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-[#F8FAFC] text-slate-900 font-sans selection:bg-amber-500 selection:text-white relative">
+
+    <!-- STICKY TOP NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <!-- Logo -->
+          <a href="#" class="flex items-center space-x-3 group">
+            <div class="bg-brand-blue text-white w-12 h-12 rounded-lg flex items-center justify-center font-display font-extrabold text-xl tracking-wider shadow-md group-hover:bg-brand-deep transition duration-300">
+              AAG
+            </div>
+            <div class="flex flex-col">
+              <span class="font-display font-bold text-slate-900 tracking-tight leading-none text-base sm:text-lg">
+                AAG Biuro Rachunkowe
+              </span>
+              <span class="text-[10px] text-brand-accent uppercase tracking-widest font-semibold mt-1">
+                Dwa pokolenia rzetelności • od 1995
+              </span>
+            </div>
+          </a>
+
+          <!-- Desktop Nav Links - Rule 8: class="hidden md:flex" -->
+          <div class="hidden md:flex items-center space-x-1 lg:space-x-3">
+            <a href="#o-nas" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">O nas</a>
+            <a href="#uslugi" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">Usługi</a>
+            <a href="#zespol" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">Zespół</a>
+            <a href="#kalkulator" class="px-3 py-2 text-sm font-semibold text-amber-700 hover:text-brand-blue transition-colors bg-amber-50 rounded-full px-4 py-1 flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-calculator"></i> Kalkulator cen
+            </a>
+            <a href="#opinie" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">Opinie</a>
+            <a href="#faq" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">FAQ</a>
+            <a href="#kontakt" class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-blue transition-colors">Kontakt</a>
+            
+            <div class="pl-2 lg:pl-4">
+              <a href="#kontakt" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-display font-semibold text-white bg-brand-blue hover:bg-brand-deep rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                Umów wizytę
+              </a>
+            </div>
+          </div>
+
+          <!-- Hamburger Button - Rule 8: class="md:hidden" -->
+          <div class="md:hidden flex items-center">
+            <button
+              type="button"
+              id="hamburger-btn"
+              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+              class="inline-flex items-center justify-center p-2 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 focus:outline-none transition"
+            >
+              <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mobile Menu - Rule 7: starts as "hidden" and toggle matches toggle('hidden') -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+        <div class="px-3 py-4 space-y-1 sm:px-4">
+          <a href="#o-nas" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">O nas</a>
+          <a href="#uslugi" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">Usługi</a>
+          <a href="#zespol" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">Zespół</a>
+          <a href="#kalkulator" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-semibold rounded-lg text-amber-700 bg-amber-50 hover:bg-amber-100 flex items-center justify-between">
+            <span>Kalkulator cen / Wycena</span>
+            <i class="fa-solid fa-calculator"></i>
+          </a>
+          <a href="#opinie" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">Opinie</a>
+          <a href="#faq" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">FAQ</a>
+          <a href="#kontakt" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="block px-4 py-2.5 text-base font-medium rounded-lg text-slate-800 hover:bg-slate-50 hover:text-brand-blue">Kontakt</a>
+          
+          <div class="pt-4 border-t border-slate-100 px-4">
+            <a href="#kontakt" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="w-full text-center flex items-center justify-center px-5 py-3 text-base font-display font-semibold text-white bg-brand-blue hover:bg-brand-deep rounded-lg shadow">
+              Umów wizytę w biurze
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION - Rules 1 & 2 -->
+    <header 
+      id="hero"
+      class="relative text-white py-24 md:py-36 min-h-[85vh] flex items-center justify-center overflow-hidden"
+      style="background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1554224155-8d04cb218406?w=1600&q=80'); background-size: cover; background-position: center; background-attachment: fixed;"
+    >
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 z-0"></div>
+      
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-500/20 border border-amber-400/40 rounded-full text-amber-400 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-8 backdrop-blur-sm shadow-inner animate-on-scroll">
+          <i class="fa-solid fa-circle-check text-brand-accent"></i> Rodzinne Tradycje od 1995 • Wrocław i cała Polska
+        </div>
+
+        <h1 class="font-display font-extrabold text-3xl sm:text-4xl md:text-6xl tracking-tight leading-tight mb-8 animate-on-scroll">
+          AAG Biuro Rachunkowe: <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">
+            Dwa pokolenia doświadczenia
+          </span> <br className="hidden md:inline"/>
+          dla Twojego biznesu we Wrocławiu.
+        </h1>
+
+        <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-light mb-12 animate-on-scroll">
+          Rzetelna księgowość, kompleksowa obsługa kadr i płac, profesjonalne doradztwo – stabilność i rozwój Twojej firmy. Świadczymy usługi stacjonarnie oraz w 100% online dla przedsiębiorstw z całej Polski.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 animate-on-scroll">
+          <a
+            href="#kontakt"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-display font-semibold text-slate-900 bg-brand-accent hover:bg-brand-accent-hover transform active:scale-95 text-center rounded-lg shadow-xl hover:shadow-2xl transition duration-300"
+          >
+            Umów bezpłatną konsultację
+            <i class="fa-solid fa-arrow-right ml-2.5"></i>
+          </a>
+          <a
+            href="#uslugi"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-display font-medium text-white bg-slate-800/80 hover:bg-slate-700/80 active:scale-95 border border-slate-600/50 backdrop-blur-sm text-center rounded-lg transition duration-300"
+          >
+            Poznaj naszą ofertę
+          </a>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-white/20 max-w-4xl mx-auto animate-on-scroll">
+          <div class="text-center">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">1995</span>
+            <span class="text-xs uppercase tracking-wider text-slate-300">Rok założenia</span>
+          </div>
+          <div class="text-center border-l border-white/10">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">2 pokolenia</span>
+            <span class="text-xs uppercase tracking-wider text-slate-300">Wiedza i tradycja</span>
+          </div>
+          <div class="text-center border-l border-white/10">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">200+</span>
+            <span class="text-xs uppercase tracking-wider text-slate-300">Obsługiwanych firm</span>
+          </div>
+          <div class="text-center border-l border-white/10">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">Orły</span>
+            <span class="text-xs uppercase tracking-wider text-slate-300">Rachunkowości</span>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- TRUST BAR / COMPLIANCE -->
+    <section class="bg-white border-b border-slate-200 py-10 shadow-sm relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div class="text-center lg:text-left min-w-[240px]">
+            <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-1">Bezpieczeństwo i prestiż</p>
+            <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900">Dlaczego nam zaufano?</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full lg:w-auto flex-1 max-w-5xl">
+            
+            <div class="flex items-center space-x-3.5 bg-slate-50 px-4 py-3 rounded-lg border border-slate-100">
+              <div class="bg-brand-blue/10 text-brand-blue p-2 rounded-md">
+                <i class="fa-solid fa-medal text-lg text-brand-blue"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">Orły Rachunkowości</p>
+                <p class="text-sm font-semibold text-slate-800">Laureat Plebiscytu</p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3.5 bg-slate-50 px-4 py-3 rounded-lg border border-slate-100">
+              <div class="bg-brand-blue/10 text-brand-blue p-2 rounded-md">
+                <i class="fa-solid fa-shield-halved text-lg text-brand-blue"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium font-semibold text-amber-600">Polisa Ubezpieczenia OC</p>
+                <p class="text-sm font-semibold text-slate-800">Wydana dla biura</p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3.5 bg-slate-50 px-4 py-3 rounded-lg border border-slate-100">
+              <div class="bg-brand-blue/10 text-brand-blue p-2 rounded-md">
+                <i class="fa-solid fa-hourglass-half text-lg text-brand-blue"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">31 lat w biznesie</p>
+                <p class="text-sm font-semibold text-slate-800 font-display">Od 1995 roku</p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3.5 bg-amber-500/10 px-4 py-3 rounded-lg border border-amber-500/20">
+              <div class="text-amber-500 p-1 rounded-md">
+                <i class="fa-solid fa-star text-lg"></i>
+              </div>
+              <div>
+                <p class="text-xs text-amber-700 font-medium">Ocena Google</p>
+                <p class="text-sm font-semibold text-slate-800">Średnia ocena 4.9/5</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="uslugi" class="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-slate-100 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Nasza Oferta</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Kompleksowe Usługi Księgowe i Kadrowe
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Oferujemy ekspercką wiedzę i skrupulatność we wszystkich obszarach finansowych Twojego przedsiębiorstwa. Sprawdź, jak możemy zabezpieczyć Twój biznes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-building text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                1. Pełna księgowość
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Kompleksowe prowadzenie ksiąg rachunkowych dla spółek z o.o., S.A., komandytowych i dużych przedsiębiorstw. Zapewniamy pełną zgodność z aktualnymi zawiłościami ustawy o rachunkowości, bilanse, rachunki zysków i strat oraz skuteczną optymalizację kosztów finansowych i podatkowych.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Dla spółek z o.o. i S.A.</span>
+              <a href="#kalkulator" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Przejdź do wyceny <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                2. Uproszczona księgowość
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Obsługa Księgi Przychodów i Rozchodów (KPiR), ryczałtu od przychodów ewidencjonowanych oraz karty podatkowej dla jednoosobowych działalności gospodarczych (JDG) i małych firm. Kontrolujemy limity VAT, księgujemy koszty, prowadzimy czytelną ewidencję środków trwałych.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Dla firm jednoosobowych</span>
+              <a href="#kalkulator" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Przejdź do wyceny <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-users text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                3. Obsługa kadr i płac
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Profesjonalne zarządzanie dokumentacją pracowniczą przedsiębiorstwa. Sporządzanie list płac, umów o pracę, umów cywilnoprawnych (zlecenie, o dzieło). Pełna wysyłka deklaracji i rozliczeń z ZUS i US, ewidencja urlopów, zwolnień lekarskich oraz wsparcie w badaniach medycyny pracy.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Dla pracodawców</span>
+              <a href="#kalkulator" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Przejdź do wyceny <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-landmark text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                4. Doradztwo podatkowe
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Eksperckie wsparcie w wyborze najkorzystniejszej formy opodatkowania (również na etapie zakładania firmy). Optymalizacja kosztów, audyty podatkowe rzetelności rozliczeń, przygotowywanie wniosków o wiążące interpretacje podatkowe indywidualne przed urzędami skarbowymi.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Optymalizacje podatkowe</span>
+              <a href="#kontakt" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Skonsultuj się <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-chart-line text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                5. Analiza finansowa
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Szczegółowa analiza kondycji i bilansowych wyników finansowych Twojej firmy. Audyt rentowności procesów, budowanie budżetów, prognozowanie cashflow i rzetelne wsparcie partnera finansowego w podejmowaniu kluczowych strategicznych decyzji inwestycyjnych lub restrukturyzacyjnych.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Strategie inwestycyjne</span>
+              <a href="#kontakt" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Skorzystaj z analizy <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white rounded-xl shadow-premium hover:shadow-premium-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col justify-between group animate-on-scroll">
+            <div class="p-8">
+              <div class="w-12 h-12 rounded-lg bg-brand-blue text-white flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                <i class="fa-solid fa-shield-check text-xl"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-blue transition-colors">
+                6. Kontrola księgowa
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Regularna, fachowa weryfikacja poprawności uprzednio prowadzonej dokumentacji księgowej, minimalizowanie ryzyka kar skarbowych oraz zapewnienie bezpieczeństwa finansowego Twojej firmy. Nanoszenie wstecznych poprawek i wyprowadzanie zaległości.
+              </p>
+            </div>
+            <div class="p-8 pt-0 border-t border-slate-50 bg-slate-50/50 flex justify-between items-center group-hover:bg-brand-blue/5 transition duration-300">
+              <span class="text-xs font-mono font-medium text-slate-400">Przegląd poprawności</span>
+              <a href="#kontakt" class="text-brand-blue font-semibold text-xs flex items-center gap-1 group-hover:text-brand-accent transition-colors">
+                Zleć audyt wsteczny <i class="fa-solid fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND STORY / ABOUT SECTION -->
+    <section id="o-nas" class="py-20 md:py-28 bg-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <div class="lg:col-span-7 animate-on-scroll">
+            <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Nasza Historia</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-6">
+              Wielopokoleniowe Biuro Rachunkowe we Wrocławiu
+            </h2>
+            <div class="w-20 h-1 bg-brand-blue mb-8 rounded-full"></div>
+            
+            <div class="prose prose-slate max-w-none text-slate-600 space-y-6 text-base sm:text-lg leading-relaxed">
+              <p>
+                W <strong>AAG Biuro Rachunkowe</strong> wierzymy, że sukces każdego biznesu opiera się na stabilnych fundamentach finansowych, rzetelności i pełnym zaufaniu. Jesteśmy dumną, rodzinną firmą z Wrocławia, która nieprzerwanie od <strong>1995 roku</strong> – czyli już od 31 lat – z ogromną pasją i zaangażowaniem wspiera przedsiębiorców w prowadzeniu ich finansów.
+              </p>
+              <p>
+                Nasze unikalne doświadczenie to <strong>dwa pokolenia rzetelnej wiedzy i praktyki</strong> przekazywanej z rąk do rąk. Nowoczesność technologiczna doskonale zazębia się u nas z wypracowanymi przez lata konserwatywnymi regułami bezpieczeństwa rozliczeń.
+              </p>
+              <p class="bg-slate-50 border-l-4 border-amber-500 p-5 rounded-r-lg font-medium italic text-slate-800 my-6 shadow-sm">
+                "Jesteśmy dumni z bycia wielokrotnym laureatem plebiscytu Orły Rachunkowości. To wyróżnienie potwierdza nasz wyjątkowy profesjonalizm i bardzo wysoką jakość usług, której możesz doświadczyć każdego dnia."
+              </p>
+              <p>
+                Stawiamy na prawdziwie <strong>indywidualne podejście</strong> do każdego z naszych klientów. Doskonale rozumiemy, że każda branża i firma wymaga unikalnych i zrównoważonych rozwiązań podatkowych. Z nami Twoje finanse są w całkowicie bezpiecznych rękach, a Ty możesz się w pełni skupić na rozwoju i skali swojego biznesu.
+              </p>
+            </div>
+
+            <!-- USP indicators -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-slate-100 uppercase tracking-wider text-xs font-semibold text-slate-700">
+              <div class="flex items-center space-x-2.5">
+                <span class="bg-amber-100 text-amber-600 p-1.5 rounded-full"><i class="fa-solid fa-check"></i></span>
+                <span>Pełna reprezentacja US i ZUS</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <span class="bg-amber-100 text-amber-600 p-1.5 rounded-full"><i class="fa-solid fa-check"></i></span>
+                <span>Ponad 31 lat zaufania na rynku</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <span class="bg-amber-100 text-amber-600 p-1.5 rounded-full"><i class="fa-solid fa-check"></i></span>
+                <span>Gwarancja Bezpieczeństwa OC</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <span class="bg-amber-100 text-amber-600 p-1.5 rounded-full"><i class="fa-solid fa-check"></i></span>
+                <span>Elektroniczny obieg dokumentów</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 relative animate-on-scroll">
+            <div class="absolute inset-0 bg-brand-blue rounded-3xl rotate-3 scale-95 opacity-5 blur-sm z-0"></div>
+            
+            <div class="absolute top-4 right-4 bg-brand-accent text-slate-900 font-display font-semibold text-xs sm:text-sm px-4.5 py-2.5 rounded-full shadow-lg z-20 flex items-center gap-1.5">
+              <i class="fa-solid fa-award text-amber-800"></i> Orły Rachunkowości
+            </div>
+
+            <div class="relative rounded-2xl overflow-hidden shadow-premium-xl z-10 border-4 border-white">
+              <img 
+                src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=700&q=80" 
+                alt="Dokumenty finansowe i rzetelna księgowość" 
+                class="w-full h-auto object-cover min-h-[400px]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent flex flex-col justify-end p-8 text-white">
+                <div class="flex items-center space-x-4 mb-2">
+                  <div class="w-12 h-12 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-circle-check text-brand-accent text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="font-display font-bold text-lg leading-tight">Bezpieczne Finanse</p>
+                    <p class="text-xs text-slate-300">Gwarancja rzetelności rodzinnego biura</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDERS & TEAM SECTION -->
+    <section id="zespol" class="py-20 md:py-28 bg-slate-50 border-t border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Założyciele i Eksperci</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Poznaj Nasz Zespół
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Pracujesz bezpośrednio z ludźmi odpowiedzialnymi za Twój spokój. Jesteśmy zespołem ekspertów z wieloletnim doświadczeniem podatkowym.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          
+          <!-- Aleksander Główka -->
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-premium p-8 flex flex-col items-center md:items-start md:flex-row gap-6 hover:shadow-premium-xl transition-all duration-300 animate-on-scroll">
+            <div class="w-28 h-28 rounded-full overflow-hidden bg-brand-blue text-white border-2 border-brand-accent shadow-md shrink-0 flex flex-col items-center justify-center font-display font-bold text-3xl">
+              AG
+              <span class="text-[9px] uppercase tracking-widest text-brand-accent mt-0.5">Senior</span>
+            </div>
+            <div class="text-center md:text-left">
+              <div class="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue text-xs font-semibold rounded-full uppercase tracking-wider mb-2">
+                Założyciel Biura
+              </div>
+              <h3 class="font-display font-bold text-2xl text-slate-900 mb-1">
+                Aleksander Główka
+              </h3>
+              <p class="text-sm font-mono text-slate-500 mb-4 font-semibold">Główny Księgowy (30+ lat doświadczenia)</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Założyciel biura, licencjonowany księgowy z ponad 30-letnim doświadczeniem w finansach oraz prawie podatkowym. Specjalizuje się w doradztwie strategicznym i obsłudze dużych spółek prawa handlowego w Polsce.
+              </p>
+            </div>
+          </div>
+
+          <!-- Agnieszka Główka -->
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-premium p-8 flex flex-col items-center md:items-start md:flex-row gap-6 hover:shadow-premium-xl transition-all duration-300 animate-on-scroll">
+            <div class="w-28 h-28 rounded-full overflow-hidden bg-slate-800 text-white border-2 border-brand-accent shadow-md shrink-0 flex flex-col items-center justify-center font-display font-bold text-3xl">
+              AG
+              <span class="text-[9px] uppercase tracking-widest text-[#D4AF37] mt-0.5">Managing</span>
+            </div>
+            <div class="text-center md:text-left">
+              <div class="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue text-xs font-semibold rounded-full uppercase tracking-wider mb-2">
+                Współwłaścicielka
+              </div>
+              <h3 class="font-display font-bold text-2xl text-slate-900 mb-1">
+                Agnieszka Główka
+              </h3>
+              <p class="text-sm font-mono text-slate-500 mb-4 font-semibold font-semibold">Ekspert Kadr, Płac i Rozliczeń</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Licencjonowana księgowa, współwłaścicielka. Wybitny ekspert w dziedzinie kadr-płac oraz rozliczeń jednoosobowych działalności. Wdraża drugie pokolenie pasji, rzetelności i pełnego profesjonalizmu w rodzinnym biurze.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PRICING CALCULATOR -->
+    <section id="kalkulator" class="py-20 md:py-28 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Wycena On-line</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Kalkulator Orientacyjnych Cen Usług
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Wybierz formę działalności, szacowaną liczbę dokumentów oraz pracowników, aby otrzymać błyskawiczną orientacyjną cenę abonamentu miesięcznego.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch max-w-6xl mx-auto">
+          
+          <!-- Configuration side -->
+          <div class="lg:col-span-7 bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-bold text-xl text-slate-900 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-calculator text-brand-blue"></i>
+                1. Skonfiguruj warunki rozliczenia
+              </h3>
+
+              <!-- Legal Form -->
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-slate-700 mb-2.5">Forma prawna i rodzaj ewidencji:</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <button
+                    type="button"
+                    id="calc-opt-ryczalt"
+                    onclick="setLegalForm('jdg_ryczalt')"
+                    class="p-4 rounded-xl text-left border text-sm transition-all focus:outline-none bg-brand-blue text-white border-brand-blue shadow-md font-medium"
+                  >
+                    <span class="block font-semibold mb-1">Ryczałt</span>
+                    <span class="text-xs opacity-90 block">Jednoosobowa działalność</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="calc-opt-kpir"
+                    onclick="setLegalForm('jdg_kpir')"
+                    class="p-4 rounded-xl text-left border text-sm transition-all focus:outline-none bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                  >
+                    <span class="block font-semibold mb-1">KPiR</span>
+                    <span class="text-xs text-slate-400 block">Księga Przychodów i Rozchodów</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="calc-opt-spolka"
+                    onclick="setLegalForm('spolka_kh')"
+                    class="p-4 rounded-xl text-left border text-sm transition-all focus:outline-none bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                  >
+                    <span class="block font-semibold mb-1">Pełna Księgowość</span>
+                    <span class="text-xs text-slate-400 block">Spółki z o.o., bilanse</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Document Count -->
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-slate-700 mb-2.5">Orientacyjna liczba dokumentów (faktur) miesięcznie:</label>
+                <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                  <button type="button" id="doc-range-1" onclick="setDocCount('1-10')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">1 - 10</button>
+                  <button type="button" id="doc-range-2" onclick="setDocCount('11-30')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-brand-blue text-white border-brand-blue font-semibold">11 - 30</button>
+                  <button type="button" id="doc-range-3" onclick="setDocCount('31-50')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">31 - 50</button>
+                  <button type="button" id="doc-range-4" onclick="setDocCount('51-100')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">51 - 100</button>
+                  <button type="button" id="doc-range-5" onclick="setDocCount('100+')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">100+</button>
+                </div>
+              </div>
+
+              <!-- Employee Count -->
+              <div class="mb-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2.5">Liczba zatrudnionych pracowników (ZUS, kadry, płace):</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button type="button" id="emp-range-1" onclick="setEmpCount('0')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">Brak</button>
+                  <button type="button" id="emp-range-2" onclick="setEmpCount('1-5')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-brand-blue text-white border-brand-blue font-semibold">1 - 5</button>
+                  <button type="button" id="emp-range-3" onclick="setEmpCount('6-15')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">6 - 15</button>
+                  <button type="button" id="emp-range-4" onclick="setEmpCount('16+')" class="py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200">16+</button>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 mt-6 italic">
+              *Kalkulator ma charakter wyłącznie poglądowy. Dokładna, ostateczna cena usług księgowych jest ustalana indywidualnie w zależności od specyfiki działalności. Zapraszamy do kontaktu.
+            </p>
+          </div>
+
+          <!-- Total Result Side -->
+          <div class="lg:col-span-5 bg-brand-slate text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-premium-xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl"></div>
+            
+            <div>
+              <span class="text-brand-accent font-semibold uppercase tracking-widest text-[11px] block mb-2">Twoje Szacunkowe Podsumowanie</span>
+              <h3 class="font-display font-bold text-2xl text-white mb-6">Wycena Abonamentu</h3>
+              
+              <div class="space-y-4 mb-8">
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                  <span class="text-slate-300 text-sm">Forma rozliczenia:</span>
+                  <span id="summary-legal" class="font-semibold text-sm">Ryczałt</span>
+                </div>
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                  <span class="text-slate-300 text-sm">Przedział faktur:</span>
+                  <span id="summary-docs" class="font-semibold text-sm">11 - 30</span>
+                </div>
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                  <span class="text-slate-300 text-sm">Sprawy kadrowo-płacowe:</span>
+                  <span id="summary-employees" class="font-semibold text-sm">1-5 pracowników</span>
+                </div>
+              </div>
+
+              <div class="bg-white/5 border border-white/10 p-5 rounded-xl text-center mb-8">
+                <p class="text-xs text-slate-400 capitalize mb-1">Szacunkowy koszt miesięczny:</p>
+                <div class="flex items-baseline justify-center gap-1.5">
+                  <span class="text-xs text-slate-400 font-semibold">ok.</span>
+                  <span id="calc-price" class="text-4xl sm:text-5xl font-extrabold text-brand-accent font-display">300</span>
+                  <span class="text-sm font-semibold text-slate-300">zł netto / msc</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="applyCalcToForm()"
+              class="w-full inline-flex items-center justify-center py-4 bg-brand-accent hover:bg-brand-accent-hover text-slate-900 font-display font-extrabold rounded-xl transition duration-300 shadow-xl"
+            >
+              <i class="fa-solid fa-square-poll-horizontal mr-2"></i> Przenieś wycenę do formularza
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS SECTION (SOCIAL PROOF) -->
+    <section id="opinie" class="py-20 md:py-28 bg-slate-50 border-t border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Referencje</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Opinie Zadowolonych Klientów
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Poznaj autentyczne zdanie wrocławskich przedsiębiorców, którzy od lat budują swoją stabilność ramię w ramię z AAG Biuro Rachunkowe.
+          </p>
+        </div>
+
+        <!-- Carousel container -->
+        <div class="max-w-4xl mx-auto relative px-4 sm:px-12">
+          
+          <div id="review-track" class="relative overflow-hidden bg-white rounded-2xl border border-slate-200 shadow-premium p-8 sm:p-12 min-h-[300px] flex flex-col justify-between">
+            
+            <div class="text-amber-500 text-xl sm:text-2xl mb-6">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <!-- Review content panels -->
+            <div id="review-content" class="text-slate-700 text-sm sm:text-base leading-relaxed italic mb-8">
+              "Współpraca z AAG Biuro Rachunkowe to czysta przyjemność! Profesjonalizm, terminowość i zawsze pomocna dłoń. Moja firma rozwija się dzięki ich wsparciu."
+            </div>
+
+            <div class="flex items-center justify-between border-t border-slate-100 pt-6">
+              <div>
+                <span id="review-author" class="block font-display font-bold text-slate-900 text-base sm:text-lg">Anna K.</span>
+                <span id="review-author-role" class="block text-xs uppercase text-slate-400 font-semibold tracking-wider">Właścicielka startupu • Wrocław</span>
+              </div>
+              <span id="review-date" class="text-xs text-slate-400 font-semibold bg-slate-100 px-3 py-1.5 rounded-full">Kwiecień 2026</span>
+            </div>
+
+          </div>
+
+          <!-- Carousel controllers -->
+          <div class="flex justify-center items-center gap-4 mt-8">
+            <button
+              type="button"
+              onclick="slideReview(-1)"
+              class="w-11 h-11 bg-white hover:bg-brand-blue hover:text-white text-slate-700 border border-slate-200 rounded-full flex items-center justify-center transition shadow-md"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="flex gap-2" id="review-dots">
+              <span class="w-3 h-3 bg-brand-blue rounded-full cursor-pointer" onclick="goToReview(0)"></span>
+              <span class="w-3 h-3 bg-slate-300 rounded-full cursor-pointer animate-pulse" onclick="goToReview(1)"></span>
+              <span class="w-3 h-3 bg-slate-300 rounded-full cursor-pointer" onclick="goToReview(2)"></span>
+              <span class="w-3 h-3 bg-slate-300 rounded-full cursor-pointer" onclick="goToReview(3)"></span>
+            </div>
+            <button
+              type="button"
+              onclick="slideReview(1)"
+              class="w-11 h-11 bg-white hover:bg-brand-blue hover:text-white text-slate-700 border border-slate-200 rounded-full flex items-center justify-center transition shadow-md"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION WITH INTERACTIVE LIGHTBOX -->
+    <section id="galeria" class="py-20 md:py-28 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Nasza Praca</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Galeria Biura i Zespołu
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Zobacz kulisy rzetelnej, bezpiecznej i precyzyjnej pracy. Kliknij na dowolne zdjęcie, by otworzyć je w trybie pełnoekranowym.
+          </p>
+        </div>
+
+        <!-- 6 standard images grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(0)">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb218406?w=600&q=80" alt="Biurko z kalkulatorem i dokumentami finansowymi" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Precyzja pracy</h4>
+              <p class="text-xs text-slate-300">Weryfikacja dokumentów księgowych.</p>
+            </div>
+          </div>
+
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(1)">
+            <img src="https://images.unsplash.com/photo-1560472355-ae525752c040?w=600&q=80" alt="Konsultacje z zakresu doradztwa podatkowego" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Zaufane Konsultacje</h4>
+              <p class="text-xs text-slate-300">Indywidualne podejście podatkowe.</p>
+            </div>
+          </div>
+
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(2)">
+            <img src="https://images.unsplash.com/photo-1562575772-a054955a5078?w=600&q=80" alt="Bezpieczny system komputerowy" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Nowoczesny system ERP</h4>
+              <p class="text-xs text-slate-300">Informatyzacja i pełna ochrona baz danych.</p>
+            </div>
+          </div>
+
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(3)">
+            <img src="https://images.unsplash.com/photo-1507679799977-c934107127c2?w=600&q=80" alt="Uścisk dłoni z partnerem" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Partnerstwo i Biznes</h4>
+              <p class="text-xs text-slate-300">Wieloletnia współpraca z firmami we Wrocławiu.</p>
+            </div>
+          </div>
+
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(4)">
+            <img src="https://images.unsplash.com/photo-1579621970563-cd6610a782ed?w=600&q=80" alt="Skarbówka i oszczędności finansowe" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Optymalizacja Kosztów</h4>
+              <p class="text-xs text-slate-300">Rzetelne kalkulacje i prognozy cashflow.</p>
+            </div>
+          </div>
+
+          <div class="relative group rounded-xl overflow-hidden cursor-pointer bg-slate-100 shadow-premium border border-slate-200 transform hover:-translate-y-1 transition duration-300" onclick="openLightbox(5)">
+            <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=600&q=80" alt="Archiwum bezpiecznych teczek dokumentów" class="w-full h-64 object-cover" />
+            <div class="absolute inset-0 bg-brand-slate/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white text-left">
+              <h4 class="font-display font-semibold text-lg text-brand-accent">Archiwizacja dokumentacji</h4>
+              <p class="text-xs text-slate-300">Wszystkie dokumenty ustrukturyzowane i poufne.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL CONTAINER -->
+    <div id="lightbox-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4">
+      <button type="button" onclick="closeLightbox()" class="absolute top-6 right-6 text-white/85 hover:text-white text-3xl focus:outline-none transition-transform hover:scale-110">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Carousel slide navigation helpers inside modal -->
+      <button type="button" onclick="slideLightbox(-1)" class="absolute left-4 bg-white/10 hover:bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl focus:outline-none transition">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+
+      <div class="max-w-4xl max-h-[80vh] flex flex-col items-center">
+        <img id="lightbox-img" src="" alt="Podgląd galerii" class="max-w-full max-h-[70vh] rounded-lg shadow-2xl object-contain border border-white/20" />
+        <h4 id="lightbox-title" class="text-white font-display font-bold text-lg sm:text-xl mt-4">Tytuł obrazka</h4>
+        <p id="lightbox-desc" class="text-slate-300 text-xs sm:text-sm mt-1">Opis obrazka</p>
+      </div>
+
+      <button type="button" onclick="slideLightbox(1)" class="absolute right-4 bg-white/10 hover:bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl focus:outline-none transition">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section id="faq" class="py-20 md:py-28 bg-slate-50 border-t border-b border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Baza Wiedzy</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Często Zadawane Pytania
+          </h2>
+          <div class="w-16 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Poznaj odpowiedzi na najważniejsze zagadnienia towarzyszące klientom rozważającym zmianę biura rachunkowego we Wrocławiu.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          
+          <!-- Q1 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(1)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                1. Jakie dokumenty są potrzebne do rozpoczęcia współpracy z biurem rachunkowym?
+              </span>
+              <span id="faq-icon-1" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-1" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Zazwyczaj potrzebujemy NIP firmy, REGON, dane wpisu do CEIDG lub KRS, dotychczasową historię rozliczeń bilansowych (jeśli firma już działa), upoważnienie do reprezentacji przed Urzędem Skarbowym (UPL-1) i ZUS (PEL), oraz dokumenty księgowe dotyczące pierwszych operacji gospodarczych. Wszelkie formalności związane z przeniesieniem bazy księgowej załatwiamy bezstresowo i bezpiecznie za Ciebie.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(2)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                2. Czy oferujecie obsługę online dla firm spoza Wrocławia?
+              </span>
+              <span id="faq-icon-2" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-2" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Tak. Choć nasza fizyczna siedziba znajduje się we Wrocławiu przy ul. Sucharskiego 25, oferujemy w pełni profesjonalną księgowość internetową online dla firm z całej Polski. Dokumenty przekazujesz nam elektronicznie za pomocą bezpiecznego dysku chmurowego lub e-maila. Konsultacje odbywają się przy użyciu wideo-konferencji i systemów telefonicznych.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(3)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                3. Jakie są realne koszty usług księgowych?
+              </span>
+              <span id="faq-icon-3" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-3" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Ceny są ustalane indywidualnie na podstawie liczby dokumentów (faktur) w miesiącu, liczby zatrudnionych pracowników oraz formy opodatkowania firmy. Aby ułatwić szacowanie, udostępniliśmy dedykowany interaktywny kalkulator cen w sekcji wyżej na stronie, który pozwala zbadać wstępne stawki abonamentów. Zapraszamy po szczegółową darmową wycenę.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(4)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                4. Czy pomagacie w zakładaniu nowej i rejestracji firmy?
+              </span>
+              <span id="faq-icon-4" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-4" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Oczywiście! Pomagamy od A do Z przejść przez proces rejestracji w CEIDG lub KRS. Doradzamy przy wyborze optymalnej formy rozliczania podatków (ryczałt, zasady ogólne, podatek liniowy) pod dany profil biznesu oraz podpowiadamy, jak legalnie unikać niepotrzebnych składek na ubezpieczenia oraz wysyłać deklaracje VAT-R.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(5)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                5. Jak często i w jaki sposób muszę dostarczać dokumenty księgowe?
+              </span>
+              <span id="faq-icon-5" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-5" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Dokumentacja księgowa powinna zostać przesłana do nas do 10. (maksymalnie do 15.) dnia każdego następnego miesiąca. Pozwala to na terminowe sporządzenie deklaracji PIT, CIT, VAT oraz ZUS. Dokumenty można przynieść osobiście do wrocławskiej siedziby lub wysłać w wygodnej i szybkiej formie elektronicznej (PDF, skany).
+              </div>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm animate-on-scroll">
+            <button
+              type="button"
+              onclick="toggleAccordion(6)"
+              class="w-full flex justify-between items-center p-6 text-left focus:outline-none group bg-slate-50/50 hover:bg-slate-50 transition"
+            >
+              <span class="font-display font-bold text-slate-950 text-sm sm:text-base pr-4">
+                6. Czy zapewniacie wsparcie i reprezentację podczas kontroli skarbowej?
+              </span>
+              <span id="faq-icon-6" class="transform transition-transform duration-300 text-brand-blue text-sm">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+            <div id="faq-content-6" class="transition-all duration-300 overflow-hidden max-h-0">
+              <div class="p-6 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed bg-white">
+                Tak. Jako licencjonowane i ubezpieczone biuro, reprezentujemy Cię przed organami skarbowymi, urzędem celno-skarbowym, ZUS oraz Państwową Inspekcją Pracy. Kontrole odbywają się zazwyczaj w naszym biurze, co oszczędza Twój cenny czas i eliminuje niepotrzebne nerwy. Gwarantujemy pełną fachowość merytoryczną.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION / CONVERSION OFFER BANNER -->
+    <section class="py-16 md:py-24 bg-brand-blue text-white relative overflow-hidden">
+      <!-- High contrast design. rgba overlay for contrast -->
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-blue to-teal-900 opacity-90 z-0"></div>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight mb-4">
+          Zyskaj spokój i rzetelność, na jaką zasługujesz.
+        </h2>
+        <p class="max-w-2xl mx-auto text-slate-200 text-base sm:text-lg mb-8">
+          Przenieś księgowość swojej firmy do AAG Biuro Rachunkowe we Wrocławiu we współpracy z dwoma pokoleniami doświadczonych profesjonalistów. Pierwsza konsultacja merytoryczna jest w 100% bezpłatna.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 bg-brand-accent hover:bg-brand-accent-hover text-slate-900 font-display font-bold rounded-lg shadow-xl shrink-0 transition">
+            <i class="fa-solid fa-calendar-days mr-2.5"></i> Umów bezpłatne spotkanie
+          </a>
+          <a href="tel:+48512080587" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium rounded-lg transition">
+            <i class="fa-solid fa-phone mr-2.5"></i> Zadzwoń: +48 512 080 587
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT, GOOGLE MAP & FORM SECTION -->
+    <section id="kontakt" class="py-20 md:py-28 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+          <span class="text-amber-500 font-display font-semibold uppercase tracking-wider text-xs sm:text-sm">Dane teleadresowe</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-2 mb-4">
+            Skontaktuj się z nami!
+          </h2>
+          <div class="w-20 h-1 bg-brand-blue mx-auto mb-6 rounded-full"></div>
+          <p class="text-slate-600 text-base">
+            Jesteśmy gotowi odpowiedzieć na Twoje pytania i wspierać rzetelny rozwój Twojego biznesu. Odwiedź nas we Wrocławiu lub porozmawiajmy telefonicznie.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Column 1: Info & Embedded map -->
+          <div class="lg:col-span-5 space-y-8 animate-on-scroll">
+            
+            <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+              
+              <h3 class="font-display font-bold text-xl text-slate-950 border-b border-slate-200 pb-3">
+                Biuro Rachunkowe AAG
+              </h3>
+
+              <div class="flex items-start space-x-4">
+                <div class="text-brand-blue w-6 text-center mt-1 text-lg">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Adres biura:</p>
+                  <p class="font-medium text-slate-800 text-base">
+                    Sucharskiego 25, 52-205 Wrocław, Polska
+                  </p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=AAG Biuro Rachunkowe+Sucharskiego 25, 52-205 Wrocław, Polska" target="_blank" rel="noopener" class="text-xs text-brand-blue hover:text-brand-deep font-semibold underline block mt-1">
+                    Otwórz w Mapach Google <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-slate-200/80">
+                <div class="flex items-start space-x-3">
+                  <div class="text-brand-blue mt-0.5">
+                    <i class="fa-solid fa-square-phone"></i>
+                  </div>
+                  <div>
+                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Zadzwoń do nas:</p>
+                    <a href="tel:+48512080587" class="font-bold text-brand-blue hover:text-brand-deep text-sm sm:text-base">
+                      +48 512 080 587
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3">
+                  <div class="text-brand-blue mt-0.5">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Napisz e-mail:</p>
+                    <a href="mailto:kontakt@aagbiuro.pl" class="font-bold text-brand-blue hover:text-brand-deep text-sm break-all">
+                      kontakt@aagbiuro.pl
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4 pt-4 border-t border-slate-200/80">
+                <div class="text-brand-blue mt-1">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Godziny otwarcia:</p>
+                  <p class="font-medium text-slate-800 text-sm sm:text-base">
+                    Poniedziałek - Piątek: 7:00 - 15:00
+                  </p>
+                  <p class="text-xs text-slate-400 mt-1">Soboty, niedziele i dni świąteczne: Nieczynne</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Google Map Iframe pointing to the real location -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-premium h-72">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2m3!1s0x470fc28d3ca72445%3A0xe5cd6b8b0e70baaf!2sSucharskiego+25%2C+52-205+Wroc%C5%82aw%2C+Polska!5m2!1spl!2spl"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Lokalizacja AAG Biuro Rachunkowe we Wrocławiu"
+              ></iframe>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Elegant and validated contact form -->
+          <div class="lg:col-span-7 bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm animate-on-scroll">
+            <h3 class="font-display font-bold text-2xl text-slate-900 mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-paper-plane text-brand-blue text-lg"></i>
+              Napisz wiadomość bezpośrednią
+            </h3>
+            <p class="text-sm text-slate-500 mb-6">Wypełnij formularz. Oddzwonimy lub odpiszemy w ciągu maksymalnie 24 godzin.</p>
+
+            <!-- Submission success message -->
+            <div id="contact-success" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center mb-6">
+              <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fa-solid fa-circle-check text-2xl"></i>
+              </div>
+              <h4 class="font-display font-bold text-lg mb-1">Dziękujemy za wiadomość!</h4>
+              <p class="text-sm text-emerald-700">Twoje zgłoszenie zostało pomyślnie wysłane. Nasz doradca skontaktuje się z Tobą telefonicznie lub mailowo w celu omówienia szczegółów wyceny.</p>
+            </div>
+
+            <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="form-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Imię i nazwisko / Firma *</label>
+                  <div class="relative">
+                    <span class="absolute left-3.5 top-3.5 text-slate-400 text-xs"><i class="fa-solid fa-user"></i></span>
+                    <input
+                      type="text"
+                      id="form-name"
+                      required
+                      placeholder="np. Jan Kowalski"
+                      class="w-full bg-white border border-slate-300 rounded-lg py-3 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="form-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Numer telefonu *</label>
+                  <div class="relative">
+                    <span class="absolute left-3.5 top-3.5 text-slate-400 text-xs"><i class="fa-solid fa-phone"></i></span>
+                    <input
+                      type="tel"
+                      id="form-phone"
+                      required
+                      placeholder="np. +48 500 600 700"
+                      class="w-full bg-white border border-slate-300 rounded-lg py-3 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="form-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Adres e-mail *</label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-3.5 text-slate-400 text-xs"><i class="fa-solid fa-envelope"></i></span>
+                  <input
+                    type="email"
+                    id="form-email"
+                    required
+                    placeholder="np. kontakt@twojafirma.pl"
+                    class="w-full bg-white border border-slate-300 rounded-lg py-3 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="form-message" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Treść wiadomości / zapytania *</label>
+                <textarea
+                  id="form-message"
+                  required
+                  rows="5"
+                  placeholder="Opisz krótko specyfikę firmy lub wklej wycenę..."
+                  class="w-full bg-white border border-slate-300 rounded-lg py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition"
+                ></textarea>
+              </div>
+
+              <!-- RODO Consent check -->
+              <div class="bg-white p-4 rounded-xl border border-slate-200">
+                <div class="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="form-rodo"
+                    required
+                    class="mt-1 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue transition"
+                  />
+                  <label for="form-rodo" class="ml-3 text-xs text-slate-500 leading-relaxed cursor-pointer select-none">
+                    * Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z ustawą o ochronie danych osobowych (RODO) w celu przesyłania odpowiedzi na zapytanie kontaktowe przez AAG Biuro Rachunkowe Wrocław. Dane podawane są dobrowolnie.
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                id="form-submit-btn"
+                class="w-full inline-flex items-center justify-center py-3.5 bg-brand-blue hover:bg-brand-deep text-white font-display font-semibold rounded-lg shadow-md transition duration-300 transform active:scale-95 cursor-pointer"
+              >
+                <span>Wyślij darmowe zapytanie</span>
+                <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-brand-slate text-white pt-16 pb-24 md:pb-12 relative z-10 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10 pb-12">
+          
+          <!-- Brand footer column -->
+          <div class="md:col-span-5 space-y-4 text-left">
+            <div class="flex items-center space-x-3">
+              <div class="bg-brand-accent text-slate-900 w-10 h-10 rounded-lg flex items-center justify-center font-display font-extrabold text-lg">
+                AAG
+              </div>
+              <span class="font-display font-bold text-lg text-white">
+                AAG Biuro Rachunkowe
+              </span>
+            </div>
+            <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+              Rodzinna spółka doradztwa księgowego i finansowego z tradycją od 1995 roku. Dbamy o Twoje bezpieczeństwo podatkowe, reprezentujemy przed urzędami skarbowymi i gwarantujemy spokój w biznesie.
+            </p>
+            <div class="flex space-x-3.5 pt-2">
+              <a href="https://www.google.com/maps/search/?api=1&query=AAG Biuro Rachunkowe+Sucharskiego 25, 52-205 Wrocław, Polska" target="_blank" rel="noopener" class="w-9 h-9 bg-white/5 hover:bg-brand-accent hover:text-slate-900 rounded-full flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-map"></i>
+              </a>
+              <a href="mailto:kontakt@aagbiuro.pl" class="w-9 h-9 bg-white/5 hover:bg-brand-accent hover:text-slate-900 rounded-full flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a href="tel:+48512080587" class="w-9 h-9 bg-white/5 hover:bg-brand-accent hover:text-slate-900 rounded-full flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+              <span class="py-1 px-3.5 bg-amber-500/15 text-amber-400 text-[10px] font-semibold tracking-wider rounded-full uppercase self-center">
+                Orły Rachunkowości
+              </span>
+            </div>
+          </div>
+
+          <!-- Shortcuts Links -->
+          <div class="md:col-span-3 text-left">
+            <h4 class="font-display font-bold text-sm text-brand-accent uppercase tracking-widest mb-4">Skróty menu</h4>
+            <ul class="space-y-2.5 text-sm text-slate-300">
+              <li><a href="#o-nas" class="hover:text-brand-accent transition">O firmie AAG</a></li>
+              <li><a href="#uslugi" class="hover:text-brand-accent transition">Rozpiętość usług</a></li>
+              <li><a href="#zespol" class="hover:text-brand-accent transition">Zarząd i eksperci</a></li>
+              <li><a href="#kalkulator" class="hover:text-amber-400 font-medium text-amber-300 transition flex items-center gap-1.5"><i class="fa-solid fa-calculator text-xs"></i> Kalkulator wyceny</a></li>
+              <li><a href="#faq" class="hover:text-brand-accent transition">Najczęstsze pytania</a></li>
+              <li><a href="#kontakt" class="hover:text-brand-accent transition">Formularz kontaktu</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal Notes / Local Presence -->
+          <div class="md:col-span-4 text-left">
+            <h4 class="font-display font-bold text-sm text-brand-accent uppercase tracking-widest mb-4">Lokalizacja i region</h4>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              Nasze biuro rachunkowe znajduje się w południowej części Wrocławia (Ołtaszyn / Wojszyce / Sucharskiego). Świadczymy usługi dla firm ze wszystkich dzielnic Wrocławia oraz zdalnie dla spółek w całym województwie dolnośląskim i całej Polsce.
+            </p>
+            <div class="p-3.5 bg-white/5 border border-white/10 rounded-lg flex items-center space-x-3 text-xs text-slate-400">
+              <i class="fa-solid fa-building-circle-check text-brand-accent text-lg"></i>
+              <span>Certyfikat Orłów i ubezpieczenie OC biura są zarejestrowane i aktualne.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Copyright statement -->
+        <div class="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs text-slate-500 gap-4">
+          <p class="text-left font-mono">
+            &copy; 1995 - 2026 AAG Biuro Rachunkowe Wrocław. Wszelkie prawa zastrzeżone.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#kontakt" class="hover:underline hover:text-slate-300">Bezpieczeństwo RODO</a>
+            <a href="#kalkulator" class="hover:underline hover:text-slate-300">Abonamenty</a>
+            <a href="#" class="hover:underline hover:text-slate-300" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Do góry <i class="fa-solid fa-arrow-up ml-1 text-[10px]"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- STICKY FOOTER MOBILE BAR - Clickable CTA on smartphone -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-slate-900 border-t border-slate-800 text-white flex justify-between p-3.5 shadow-2xl backdrop-blur-md bg-opacity-95">
+      <a href="tel:+48512080587" class="flex-1 mr-2 bg-slate-800 hover:bg-slate-700 text-white py-3 px-4 rounded-lg font-display font-bold text-center text-xs flex items-center justify-center gap-2">
+        <i class="fa-solid fa-phone text-brand-accent animate-pulse"></i> Zadzwoń teraz
+      </a>
+      <a href="#kontakt" class="flex-1 bg-brand-accent hover:bg-brand-accent-hover text-slate-900 py-3 px-4 rounded-lg font-display font-semibold text-center text-xs flex items-center justify-center gap-1">
+        <i class="fa-solid fa-envelope"></i> Umów wycenę
+      </a>
+    </div>
+
+    <!-- BACK TO TOP SCROLL BUTTON -->
+    <button
+      type="button"
+      id="back-to-top-btn"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="hidden fixed bottom-6 right-6 z-40 w-11 h-11 bg-brand-blue hover:bg-brand-deep text-white rounded-full shadow-2xl flex items-center justify-center text-sm transition duration-300 pointer-events-auto border border-white/20 hover:scale-105"
+      title="Przewiń do góry"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- VANILLA JAVASCRIPT CODE FOR INTERACTIVE LAYOUT -->
+    <script>
+      // 1. SCROLL REVEAL ANIMATIONS VIA INTERSECTION OBSERVER
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px 0px -10% 0px",
+          threshold: 0.05
+        };
+
+        const revealCallback = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-active");
+              // Once activated, stop observing this item
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(revealCallback, observerOptions);
+        document.querySelectorAll(".animate-on-scroll").forEach(el => {
+          observer.observe(el);
+          // Just in case, set initially visible triggers
+          el.classList.add("transition-all");
+        });
+
+        // Initialize calculators and active views
+        updateCalculatorValue();
+        renderDots();
+      });
+
+      // BACK TO TOP VISIBILITY MONITOR
+      window.addEventListener("scroll", () => {
+        const btn = document.getElementById("back-to-top-btn");
+        if (btn) {
+          if (window.scrollY > 400) {
+            btn.classList.remove("hidden");
+          } else {
+            btn.classList.add("hidden");
+          }
+        }
+      });
+
+      // 2. PRICING CALCULATOR LOGIC
+      let currentLegalForm = "jdg_ryczalt"; // options: jdg_ryczalt, jdg_kpir, spolka_kh
+      let currentDocCount = "11-30"; // options: 1-10, 11-30, 31-50, 51-100, 100+
+      let currentEmpCount = "1-5"; // options: 0, 1-5, 6-15, 16+
+
+      function setLegalForm(form) {
+        currentLegalForm = form;
+        
+        // Update active stylings
+        const btns = {
+          'jdg_ryczalt': document.getElementById('calc-opt-ryczalt'),
+          'jdg_kpir': document.getElementById('calc-opt-kpir'),
+          'spolka_kh': document.getElementById('calc-opt-spolka')
+        };
+        
+        Object.keys(btns).forEach(key => {
+          if (btns[key]) {
+            if (key === form) {
+              btns[key].className = "p-4 rounded-xl text-left border text-sm transition-all focus:outline-none bg-brand-blue text-white border-brand-blue shadow-md font-medium";
+            } else {
+              btns[key].className = "p-4 rounded-xl text-left border text-sm transition-all focus:outline-none bg-white text-slate-700 border-slate-200 hover:bg-slate-100";
+            }
+          }
+        });
+
+        // Update textual translation
+        const legalLabel = document.getElementById('summary-legal');
+        if (legalLabel) {
+          if (form === "jdg_ryczalt") legalLabel.innerText = "Ryczałt ewidencjonowany";
+          if (form === "jdg_kpir") legalLabel.innerText = "KPiR (Uproszczona księga)";
+          if (form === "spolka_kh") legalLabel.innerText = "Pełna księgowość (KH)";
+        }
+
+        updateCalculatorValue();
+      }
+
+      function setDocCount(count) {
+        currentDocCount = count;
+
+        const ranges = ["1-10", "11-30", "31-50", "51-100", "100+"];
+        ranges.forEach((rng, index) => {
+          const btn = document.getElementById(`doc-range-${index + 1}`);
+          if (btn) {
+            if (rng === count) {
+              btn.className = "py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-brand-blue text-white border-brand-blue font-semibold";
+            } else {
+              btn.className = "py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200";
+            }
+          }
+        });
+
+        const docsLabel = document.getElementById('summary-docs');
+        if (docsLabel) {
+          docsLabel.innerText = count + " faktur rocznie";
+        }
+
+        updateCalculatorValue();
+      }
+
+      function setEmpCount(count) {
+        currentEmpCount = count;
+
+        const rangeMap = {
+          "0": document.getElementById('emp-range-1'),
+          "1-5": document.getElementById('emp-range-2'),
+          "6-15": document.getElementById('emp-range-3'),
+          "16+": document.getElementById('emp-range-4')
+        };
+
+        Object.keys(rangeMap).forEach(key => {
+          const btn = rangeMap[key];
+          if (btn) {
+            if (key === count) {
+              btn.className = "py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-brand-blue text-white border-brand-blue font-semibold";
+            } else {
+              btn.className = "py-2.5 px-2 rounded-lg text-center border text-xs sm:text-sm transition-all bg-white text-slate-700 border-slate-200";
+            }
+          }
+        });
+
+        const empLabel = document.getElementById('summary-employees');
+        if (empLabel) {
+          empLabel.innerText = count === "0" ? "Bez zatrudniania" : count + " osób zatrudnionych";
+        }
+
+        updateCalculatorValue();
+      }
+
+      function updateCalculatorValue() {
+        let price = 200;
+
+        // Base Legal Form Price
+        if (currentLegalForm === "jdg_ryczalt") price = 180;
+        if (currentLegalForm === "jdg_kpir") price = 250;
+        if (currentLegalForm === "spolka_kh") price = 850;
+
+        // Document multiplier
+        let docMultiplier = 1.0;
+        if (currentDocCount === "1-10") docMultiplier = 0.8;
+        if (currentDocCount === "11-30") docMultiplier = 1.0;
+        if (currentDocCount === "31-50") docMultiplier = 1.35;
+        if (currentDocCount === "51-100") docMultiplier = 1.8;
+        if (currentDocCount === "100+") docMultiplier = 2.6;
+
+        // Employee premium add-on charges
+        let empAddon = 0;
+        if (currentEmpCount === "0") empAddon = 0;
+        if (currentEmpCount === "1-5") empAddon = 120;
+        if (currentEmpCount === "6-15") empAddon = 340;
+        if (currentEmpCount === "16+") empAddon = 750;
+
+        let total = Math.round((price * docMultiplier) + empAddon);
+        
+        const priceTxt = document.getElementById("calc-price");
+        if (priceTxt) {
+          priceTxt.innerText = total;
+        }
+      }
+
+      function applyCalcToForm() {
+        const legalLabelText = currentLegalForm === "jdg_ryczalt" ? "Ryczałt ewidencjonowany" : currentLegalForm === "jdg_kpir" ? "Księga Przychodów i Rozchodów (KPiR)" : "Pełna księgowość (Księgi Handlowe)";
+        const quoteText = document.getElementById("calc-price")?.innerText || "300";
+        
+        const msg = `Dzień dobry, proszę o kontakt i szczegółową wycenę. Interesuje mnie oferta wyliczona w kalkulatorze:\n- Forma prawna: ${legalLabelText}\n- Szacunkowe faktury: ${currentDocCount}/miesiąc\n- Szacunkowi pracownicy ZUS: ${currentEmpCount}\n- Szacunkowy koszt z konfiguratora: ok. ${quoteText} PLN netto miesięcznie.\nProszę o kontakt na mój numer telefonu.`;
+        
+        const field = document.getElementById("form-message");
+        if (field) {
+          field.value = msg;
+        }
+
+        // Smooth scroll to Kontakt
+        const section = document.getElementById("kontakt");
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      // 3. GOOGLE GOOGLE REVIEWS CAROUSEL
+      const reviews = [
+        {
+          name: "Anna K.",
+          role: "Właścicielka startupu technologicznego • Wrocław",
+          date: "Kwiecień 2026",
+          text: "\"Współpraca z AAG Biuro Rachunkowe to czysta przyjemność! Profesjonalizm, terminowość i zawsze pomocna dłoń. Moja firma rozwija się stabilnie dzięki ich wsparciu. Pomogli mi poukładać podatki na start i optymalnie rozliczać koszty.\"",
+          stars: 5
+        },
+        {
+          name: "Marek Z.",
+          role: "Przedsiębiorca budowlany • Wrocław",
+          date: "Marzec 2026",
+          text: "\"Zdecydowanie polecam biuro AAG! Pani Agnieszka i Pan Aleksander to prawdziwi eksperci pod każdym względem. Zawsze rozwieją wszelkie wątpliwości podatkowe i dbają o najmniejszy szczegół kadr i płac. Są niezwykle cierpliwi.\"",
+          stars: 5
+        },
+        {
+          name: "Ewa P.",
+          role: "Właścicielka sklepu internetowego • Dolny Śląsk",
+          date: "Luty 2026",
+          text: "\"Od lat korzystam z usług AAG i nigdy się nie zawiodłam. Ich doradztwo podatkowe jest po prostu nieocenione dla mojej działalności e-commerce, a obsługa kadr i płac bezbłędna. Czuję absolutne bezpieczeństwo przed urzędami skarbowymi.\"",
+          stars: 5
+        },
+        {
+          name: "Tomasz R.",
+          role: "Projektant & Freelancer • Wrocław",
+          date: "Styczeń 2026",
+          text: "\"Rodzinne podejście do klienta to coś, co zdecydowanie wyróżnia AAG na tle bezdusznych korporacji. Dokładnie rozumiem wszystkie zawiłości księgowe, dzięki ich fachowym i prostym wyjaśnieniom każdego miesiąca.\"",
+          stars: 5
+        }
+      ];
+
+      let activeReview = 0;
+
+      function renderDots() {
+        const dotsBox = document.getElementById("review-dots");
+        if (dotsBox) {
+          dotsBox.innerHTML = reviews.map((_, i) => `
+            <span class="w-3 h-3 rounded-full cursor-pointer transition ${i === activeReview ? 'bg-brand-blue bg-opacity-100 scale-110' : 'bg-slate-300 hover:bg-slate-400'}" onclick="goToReview(${i})"></span>
+          `).join('');
+        }
+      }
+
+      function slideReview(dir) {
+        activeReview = (activeReview + dir + reviews.length) % reviews.length;
+        updateReviewContent();
+      }
+
+      function goToReview(index) {
+        activeReview = index;
+        updateReviewContent();
+      }
+
+      function updateReviewContent() {
+        const item = reviews[activeReview];
+        const contentBox = document.getElementById("review-content");
+        const nameBox = document.getElementById("review-author");
+        const roleBox = document.getElementById("review-author-role");
+        const dateBox = document.getElementById("review-date");
+
+        if (contentBox) contentBox.innerText = item.text;
+        if (nameBox) nameBox.innerText = item.name;
+        if (roleBox) roleBox.innerText = item.role;
+        if (dateBox) dateBox.innerText = item.date;
+
+        renderDots();
+      }
+
+      // 4. FAQ ACCORDION LOGIC
+      function toggleAccordion(id) {
+        const content = document.getElementById(`faq-content-${id}`);
+        const icon = document.getElementById(`faq-icon-${id}`);
+        
+        if (content) {
+          if (content.style.maxHeight === "0px" || !content.style.maxHeight || content.classList.contains("collapsed-faq")) {
+            // Open it
+            content.style.maxHeight = content.scrollHeight + "px";
+            if (icon) icon.className = "transform transition-transform duration-300 text-brand-blue text-sm rotate-180";
+            content.classList.remove("collapsed-faq");
+          } else {
+            // Close it
+            content.style.maxHeight = "0px";
+            if (icon) icon.className = "transform transition-transform duration-300 text-brand-blue text-sm";
+            content.classList.add("collapsed-faq");
+          }
+        }
+      }
+
+      // Initialize first accordion open by default
+      setTimeout(() => {
+        toggleAccordion(1);
+        toggleAccordion(2);
+      }, 500);
+
+      // 5. GALLERY LIGHTBOX LOGIC
+      const galleryData = [
+        { url: "https://images.unsplash.com/photo-1554224155-8d04cb218406?w=1200&q=80", title: "Precyzja pracy", desc: "Weryfikacja dokumentów i rzetelne księgowanie transakcji finansowych." },
+        { url: "https://images.unsplash.com/photo-1560472355-ae525752c040?w=1200&q=80", title: "Zaufane Konsultacje", desc: "Spotkania podatkowe nastawione na optymalizację rozliczeń Twojej firmy." },
+        { url: "https://images.unsplash.com/photo-1562575772-a054955a5078?w=1200&q=80", title: "Najwyższe standardy IT", desc: "Praca na bezpiecznych chmurach danych i systemach informatycznych klasy ERP." },
+        { url: "https://images.unsplash.com/photo-1507679799977-c934107127c2?w=1200&q=80", title: "Partnerstwo w biznesie", desc: "Wrocławscy przedsiębiorcy wspierani wielopokoleniowo." },
+        { url: "https://images.unsplash.com/photo-1579621970563-cd6610a782ed?w=1200&q=80", title: "Optymalizacje Kosztowe", desc: "Skrupulatny przegląd wydatków podatnika przynosi długofalowy spokój." },
+        { url: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=1200&q=80", title: "Bezpieczne archiwum", desc: "System ochrony danych pod rygorem procedur RODO i tajemnicy zawodowej." }
+      ];
+
+      let activeLightbox = 0;
+
+      function openLightbox(index) {
+        activeLightbox = index;
+        const modal = document.getElementById("lightbox-modal");
+        const img = document.getElementById("lightbox-img");
+        const title = document.getElementById("lightbox-title");
+        const desc = document.getElementById("lightbox-desc");
+
+        if (modal && img && title && desc) {
+          img.src = galleryData[index].url;
+          title.innerText = galleryData[index].title;
+          desc.innerText = galleryData[index].desc;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        }
+      }
+
+      function closeLightbox() {
+        const modal = document.getElementById("lightbox-modal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      }
+
+      function slideLightbox(direction) {
+        activeLightbox = (activeLightbox + direction + galleryData.length) % galleryData.length;
+        const img = document.getElementById("lightbox-img");
+        const title = document.getElementById("lightbox-title");
+        const desc = document.getElementById("lightbox-desc");
+
+        if (img && title && desc) {
+          img.src = galleryData[activeLightbox].url;
+          title.innerText = galleryData[activeLightbox].title;
+          desc.innerText = galleryData[activeLightbox].desc;
+        }
+      }
+
+      // 6. CONTACT FORM SUBMISSION
+      function submitContactForm(event) {
+        event.preventDefault();
+        const rodoBox = document.getElementById("form-rodo");
+        if (rodoBox && !rodoBox.checked) {
+          alert("Należy zaakceptować zgodę RODO, aby wysłać wiadomość.");
+          return;
+        }
+
+        const submitBtn = document.getElementById("form-submit-btn");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `<span>Trwa wysyłanie...</span> <i class="fa-solid fa-spinner animate-spin ml-2"></i>`;
+        }
+
+        // Simulate secure API submission
+        setTimeout(() => {
+          const form = document.getElementById("contact-form");
+          const successBox = document.getElementById("contact-success");
+          
+          if (form) form.classList.add("hidden");
+          if (successBox) successBox.classList.remove("hidden");
+        }, 1200);
+      }
+    </script>
+
   </body>
 </html>
-
